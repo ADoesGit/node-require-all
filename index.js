@@ -1,4 +1,4 @@
-var fs = require('fs');
+import fs from 'fs';
 
 var DEFAULT_EXCLUDE_DIR = /^\./;
 var DEFAULT_FILTER = /^([^\.].*)\.js(on)?$/;
@@ -53,7 +53,7 @@ module.exports = function requireAll(options) {
       var name = filterFile(file);
       if (!name) return;
 
-      modules[map(name, filepath)] = resolve(require(filepath));
+      modules[map(name, filepath)] = resolve(import(filepath));
     }
   });
 
